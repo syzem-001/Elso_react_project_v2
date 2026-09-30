@@ -1,0 +1,36 @@
+import React from 'react'
+import { programs } from '../data'
+import { Card } from '@heroui/react'
+
+export const Programs = () => {
+    return (
+        <div>
+            <h2 className='text-2xl text-center p-5'>Iskolai programok</h2>
+            {/* 
+        <ul>
+            {programs.map(({id,title})=>
+                <li key={id}>{title}</li>
+            )}
+         </ul>
+        */}
+            <div className='flex flex-wrap justify-center gap-4'>
+                {programs.map(({id,title,category,price,participants,capacity,indoor}) =>
+                    <Card key={id} className="w-[260]" variant="default">
+                        <Card.Header>
+                            <Card.Title>{title}</Card.Title>
+                            <Card.Description>Kategória:{category} - Ár:{price}Ft</Card.Description>
+                        </Card.Header>
+                        <Card.Content>
+                            <p>Maximális létszám:{capacity}</p>
+                            <p>Szabadhelyek száma:{capacity-participants}</p>
+                            <p>{indoor ? 'Beltéri' : 'Kültéri'}</p>
+                        </Card.Content>
+                    </Card>
+
+                )}
+            </div>
+        </div>
+    )
+}
+
+
